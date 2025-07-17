@@ -1,5 +1,5 @@
 {
-  "name": "leetcode-backend",
+  "name": "leetcode-problem-service",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
