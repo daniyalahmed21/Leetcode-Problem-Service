@@ -1,8 +1,8 @@
 const express = require("express")
-const {ProblemController} = require("../../controllers")
+const {problemController} = require("../../controllers")
 const problemRouter = express.Router()
 
-problemRouter.get("/ping",ProblemController.pingProblemController)
+problemRouter.get("/ping",problemController.pingProblemController)
 
 module.exports = { 
     problemRouter
