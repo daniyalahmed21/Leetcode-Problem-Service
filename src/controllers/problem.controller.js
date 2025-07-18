@@ -1,39 +1,53 @@
 const { StatusCodes } = require("http-status-codes");
 const { NotImplemented } = require("../errors/NotImplemented.error");
 
-function getProblem() {}
-
-function pingProblemController(req, res) {
-  return res.json({ message: "Problem controller is up" });
-}
-
-function getProblems(req, res) {
-  return res
-    .status(StatusCodes.NOT_IMPLEMENTED)
-    .json({ message: "Not Implemented" });
-}
-
-function addProblem(req, res,next) {
+function getProblem(req, res, next) {
   try {
     //nothing
-    throw new NotImplemented("addProblem");
-
+    throw new NotImplemented("getProblem");
   } catch (error) {
     next(error);
-
   }
 }
 
-function deleteProblem(req, res) {
-  return res
-    .status(StatusCodes.NOT_IMPLEMENTED)
-    .json({ message: "Not Implemented" });
+function pingProblemController(req, res, next) {
+  return res.json({ message: "Problem controller is up" });
 }
 
-function updateProblem(req, res) {
-  return res
-    .status(StatusCodes.NOT_IMPLEMENTED)
-    .json({ message: "Not Implemented" });
+function getProblems(req, res, next) {
+  try {
+    //nothing
+    throw new NotImplemented("getProblems");
+  } catch (error) {
+    next(error);
+  }
+}
+
+function addProblem(req, res, next) {
+  try {
+    //nothing
+    throw new NotImplemented("addProblem");
+  } catch (error) {
+    next(error);
+  }
+}
+
+function deleteProblem(req, res, next) {
+  try {
+    //nothing
+    throw new NotImplemented("deleteProblem");
+  } catch (error) {
+    next(error);
+  }
+}
+
+function updateProblem(req, res, next) {
+  try {
+    //nothing
+    throw new NotImplemented("updateProblem");
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports = {
