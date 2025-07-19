@@ -1,10 +1,19 @@
 const { StatusCodes } = require("http-status-codes");
 const { NotImplemented } = require("../errors/NotImplemented.error");
+const { ProblemService } = require("../services");
+const { ProblemRepository } = require("../repositories");
 
-function getProblem(req, res, next) {
+const problemService = new ProblemService(new ProblemRepository()); 
+
+async function getProblem(req, res, next) {
   try {
-    //nothing
-    throw new NotImplemented("getProblem");
+    const problems = await problemService.getAllProblems()
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Successfully fetched problems",
+      error: [],
+      data: problems,
+    })
   } catch (error) {
     next(error);
   }
@@ -23,10 +32,16 @@ function getProblems(req, res, next) {
   }
 }
 
-function addProblem(req, res, next) {
+async function addProblem(req, res, next) {
   try {
-    //nothing
-    throw new NotImplemented("addProblem");
+    const newProblem = await problemService.createProblem(req.body);
+    console.log("hello")
+    return res.status(StatusCodes.CREATED).json({
+      success: true,
+      message: "Successfully created problem",
+      error: [],
+      data: newProblem,
+    });
   } catch (error) {
     next(error);
   }

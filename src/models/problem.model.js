@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-const { Schema } = mongoose;
+const mongoose = require("mongoose");
+const { Schema } = require("mongoose");
 
 const problemSchema = new Schema({
   title: {
@@ -35,4 +35,4 @@ const problemSchema = new Schema({
 
 const Problem = mongoose.model("Problem", problemSchema); //logical view
 
-module.exports = { Problem }; //actual object
+module.exports = {Problem} //actual object

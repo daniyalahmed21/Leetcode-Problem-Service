@@ -16,3 +16,6 @@ All routes are structured using:
 - bodyParser
 - nodemon
 - dotenv
+- marked (converts markdown into html)
+- sanitize-html (remove unsafe tags )
+- 
