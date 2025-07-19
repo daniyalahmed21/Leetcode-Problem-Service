@@ -5,15 +5,9 @@ const { ProblemRepository } = require("../repositories");
 
 const problemService = new ProblemService(new ProblemRepository()); 
 
-async function getProblem(req, res, next) {
+ function getProblem(req, res, next) {
   try {
-    const problems = await problemService.getAllProblems()
-    return res.status(StatusCodes.OK).json({
-      success: true,
-      message: "Successfully fetched problems",
-      error: [],
-      data: problems,
-    })
+    throw new NotImplemented("getProblem");
   } catch (error) {
     next(error);
   }
@@ -23,10 +17,16 @@ function pingProblemController(req, res, next) {
   return res.json({ message: "Problem controller is up" });
 }
 
-function getProblems(req, res, next) {
+async function getProblems(req, res, next) {
   try {
-    //nothing
-    throw new NotImplemented("getProblems");
+    const problems = await problemService.getAllProblems()
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Successfully fetched problems",
+      error: [],
+      data: problems,
+    })
+    
   } catch (error) {
     next(error);
   }

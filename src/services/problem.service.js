@@ -6,13 +6,10 @@ class ProblemService {
   }
 
   async createProblem(problemData) {
-    try {
       problemData.description = cleanMarkdown(problemData.description);
       const problem = await this.ProblemRepository.createProblem(problemData);
       return problem;
-    } catch (error) {
-      throw error;
-    }
+   
   }
 
   async getAllProblems (){
