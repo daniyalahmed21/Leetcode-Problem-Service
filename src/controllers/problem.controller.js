@@ -3,11 +3,18 @@ const { NotImplemented } = require("../errors/NotImplemented.error");
 const { ProblemService } = require("../services");
 const { ProblemRepository } = require("../repositories");
 
-const problemService = new ProblemService(new ProblemRepository()); 
+const problemService = new ProblemService(new ProblemRepository());
 
- function getProblem(req, res, next) {
+async function getProblem(req, res, next) {
   try {
-    throw new NotImplemented("getProblem");
+    const { id } = req.params;
+    const problem = await problemService.getProblem(id);
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Successfully fetched problem",
+      error: [],
+      data: problem,
+    });
   } catch (error) {
     next(error);
   }
@@ -19,14 +26,13 @@ function pingProblemController(req, res, next) {
 
 async function getProblems(req, res, next) {
   try {
-    const problems = await problemService.getAllProblems()
+    const problems = await problemService.getAllProblems();
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Successfully fetched problems",
       error: [],
       data: problems,
-    })
-    
+    });
   } catch (error) {
     next(error);
   }
@@ -35,7 +41,7 @@ async function getProblems(req, res, next) {
 async function addProblem(req, res, next) {
   try {
     const newProblem = await problemService.createProblem(req.body);
-    console.log("hello")
+    console.log("hello");
     return res.status(StatusCodes.CREATED).json({
       success: true,
       message: "Successfully created problem",
