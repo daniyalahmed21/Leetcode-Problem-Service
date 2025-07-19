@@ -18,7 +18,7 @@ function cleanMarkdown(rawMarkdown) {
 
   // Step 2: Sanitize HTML to remove unsafe tags (like <script>)
   const cleanHtml = sanitize(html, {
-    allowedTags: sanitize.defaults.allowedTags,
+    allowedTags: sanitize.defaults.allowedTags.concat(["img"]),
   });
 
   // Step 3: Convert sanitized HTML back to markdown

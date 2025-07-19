@@ -9,6 +9,7 @@ async function getProblem(req, res, next) {
   try {
     const { id } = req.params;
     const problem = await problemService.getProblem(id);
+
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Successfully fetched problem",
