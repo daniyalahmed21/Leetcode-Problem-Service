@@ -42,12 +42,33 @@ class ProblemRepository {
 
   async deleteProblem(id) {
     try {
-
       const deletedProblem = await Problem.findByIdAndDelete(id);
       if (!deletedProblem) {
         throw new NotFound("Problem", id);
       }
       return deletedProblem;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async updateProblem(id, data) {
+    try {
+    console.log("hello")
+
+      const updatedProblem = await Problem.findByIdAndUpdate(id, data, {
+        new: true,
+      });
+
+    console.log(updatedProblem)
+
+
+      if (!updatedProblem) {
+        throw new NotFound("Problem", id);
+      }
+
+      return updatedProblem;
     } catch (error) {
       console.log(error);
       throw error;
