@@ -10,8 +10,6 @@ class ProblemRepository {
         testcases: problemData.testCases ? problemData.testCases : [],
       });
 
-      
-
       return problem;
     } catch (error) {
       console.log(error);
@@ -36,6 +34,20 @@ class ProblemRepository {
         throw new NotFound("Problem", id);
       }
       return problem;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async deleteProblem(id) {
+    try {
+
+      const deletedProblem = await Problem.findByIdAndDelete(id);
+      if (!deletedProblem) {
+        throw new NotFound("Problem", id);
+      }
+      return deletedProblem;
     } catch (error) {
       console.log(error);
       throw error;

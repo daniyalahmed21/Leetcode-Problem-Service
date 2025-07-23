@@ -6,21 +6,24 @@ class ProblemService {
   }
 
   async createProblem(problemData) {
-      problemData.description = cleanMarkdown(problemData.description);
-      const problem = await this.ProblemRepository.createProblem(problemData);
-      return problem;
-   
+    problemData.description = cleanMarkdown(problemData.description);
+    const problem = await this.ProblemRepository.createProblem(problemData);
+    return problem;
   }
 
-  async getAllProblems (){
+  async getAllProblems() {
     const problems = await this.ProblemRepository.getAllProblems();
     return problems;
   }
 
-  async getProblem (id){
+  async getProblem(id) {
     const problem = await this.ProblemRepository.getProblem(id);
     return problem;
   }
-}
 
+  async deleteProblem(id) {
+    const deletedProblem = await this.ProblemRepository.deleteProblem(id);
+    return deletedProblem;
+  }
+}
 module.exports = { ProblemService };
