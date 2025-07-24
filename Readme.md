@@ -18,4 +18,6 @@ All routes are structured using:
 - dotenv
 - marked (converts markdown into html)
 - sanitize-html (remove unsafe tags )
-- 
+- winston (used for custom logging)
+- winston-mongodb (used for storing log in db)
+
