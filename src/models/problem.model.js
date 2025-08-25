@@ -28,6 +28,26 @@ const problemSchema = new Schema({
       },
     },
   ],
+  codeStubs: [
+    {
+      language: {
+        type: String,
+        required: true,
+      },
+      startSnippet: {
+        type: String,
+        required: true,
+      },
+      userSnippet: {
+        type: String,
+        required: true,
+      },
+      endSnippet: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   editorial: {
     type: String,
   },
@@ -35,4 +55,4 @@ const problemSchema = new Schema({
 
 const Problem = mongoose.model("Problem", problemSchema); //logical view
 
-module.exports = {Problem} //actual object
+module.exports = { Problem }; //actual object

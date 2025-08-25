@@ -1,6 +1,6 @@
 const { NotFound } = require("../errors/notfound.error");
 const { Problem } = require("../models");
-const {logger} = require ("../config/logger.config.js")
+const { logger } = require("../config/logger.config.js");
 
 class ProblemRepository {
   async createProblem(problemData) {
@@ -8,7 +8,8 @@ class ProblemRepository {
       const problem = await Problem.create({
         title: problemData.title,
         description: problemData.description,
-        testcases: problemData.testCases ? problemData.testCases : [],
+        testcases: problemData.testcases ? problemData.testcases : [],
+        codeStubs: problemData.codeStubs,
       });
 
       return problem;
@@ -33,7 +34,7 @@ class ProblemRepository {
       const problem = await Problem.findById(id);
 
       if (!problem) {
-        logger.error(`No problem find with this ${id}`)
+        logger.error(`No problem find with this ${id}`);
         throw new NotFound("Problem", id);
       }
       return problem;
@@ -58,14 +59,13 @@ class ProblemRepository {
 
   async updateProblem(id, data) {
     try {
-    console.log("hello")
+      console.log("hello");
 
       const updatedProblem = await Problem.findByIdAndUpdate(id, data, {
         new: true,
       });
 
-    console.log(updatedProblem)
-
+      console.log(updatedProblem);
 
       if (!updatedProblem) {
         throw new NotFound("Problem", id);
